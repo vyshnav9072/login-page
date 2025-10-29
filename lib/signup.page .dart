@@ -9,6 +9,7 @@ class signupage extends StatefulWidget {
 }
 
 class _signupageState extends State<signupage> {
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,23 +21,32 @@ class _signupageState extends State<signupage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 100),
-              Text("Create an account  ", style: TextStyle(fontSize: 25)),
-              Text("Connect with your friends today!"),
+              Text(
+                "Create an account  ",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+              ),
+              Text(
+                "Connect with your friends today!",
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
               SizedBox(height: 50),
               SizedBox(
                 height: 30,
                 child: Text(
                   "Email address",
-                  style: TextStyle(color: Colors.purple),
+                  style: TextStyle(
+                    color: Colors.purple,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   labelText: 'Enter your email',
-                  labelStyle: TextStyle(fontFamily: 'Manrope'),
+                  labelStyle: TextStyle(fontFamily: 'Manrope',fontWeight: FontWeight.w600),
                 ),
               ),
               SizedBox(height: 25),
@@ -44,10 +54,10 @@ class _signupageState extends State<signupage> {
                 height: 30,
                 child: Text(
                   "Phone Number",
-                  style: TextStyle(color: Colors.purple),
+                  style: TextStyle(color: Colors.purple,fontWeight: FontWeight.w600),
                 ),
               ),
-          
+
               IntlPhoneField(
                 showCountryFlag: false,
                 // Padding for the flag button
@@ -58,9 +68,7 @@ class _signupageState extends State<signupage> {
                   // Label for the input field
                   labelText: 'Phone Number',
                   // Border style for the input field
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(),
-                  ),
+                  border: OutlineInputBorder(borderSide: BorderSide()),
                 ),
                 // Default country code (India)
                 initialCountryCode: 'IN',
@@ -74,30 +82,36 @@ class _signupageState extends State<signupage> {
                   print(phone.completeNumber);
                 },
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 15),
               SizedBox(
                 height: 30,
-                child: Text("password", style: TextStyle(color: Colors.purple)),
+                child: Text("password", style: TextStyle(color: Colors.purple,fontWeight: FontWeight.w600)),
               ),
-          
+
               TextField(
                 decoration: InputDecoration(
                   suffixIcon: Icon(Icons.remove_red_eye),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   labelText: '  Please Enter Your Password',
                   labelStyle: TextStyle(fontFamily: 'Manrope'),
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 15),
               Row(
                 children: [
-                  Icon(Icons.check_box ),
-          
-                  Text("Remember Me"),
+                  Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      setState(() {
+                        isChecked = value ?? false;
+                      });
+                    },
+                  ),
+                  Text("Remember Me",style: TextStyle(fontWeight: FontWeight.w600),),
                   Spacer(),
-                  Text("Forgot Password", style: TextStyle(color: Colors.red)),
+                  Text("Forgot Password", style: TextStyle(color: Colors.red,fontWeight: FontWeight.w600)),
                   SizedBox(height: 80),
                 ],
               ),
@@ -105,14 +119,14 @@ class _signupageState extends State<signupage> {
                 height: 50,
                 width: MediaQuery.of(context).size.width * 0.99,
                 child: ElevatedButton(
-                  child: Text('Login', style: TextStyle(color: Colors.white)),
+                  child: Text('Login', style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600)),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromRGBO(78, 1, 137, 1),
                   ),
                   onPressed: () {},
                 ),
               ),
-              SizedBox(height:10,),
+              SizedBox(height: 10),
               Row(
                 children: [
                   Expanded(
@@ -124,8 +138,8 @@ class _signupageState extends State<signupage> {
                       endIndent: 10,
                     ),
                   ),
-          
-                  Text("oR"),
+
+                  Text("oR",style: TextStyle(fontWeight: FontWeight.w600),),
                   Expanded(
                     child: Divider(
                       height: 10,
@@ -137,7 +151,7 @@ class _signupageState extends State<signupage> {
                   ),
                 ],
               ),
-              SizedBox(height: 30,),
+              SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -148,16 +162,16 @@ class _signupageState extends State<signupage> {
                     ),
                     height: 50,
                     width: 150,
-          
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-          
-                        children: [
-                          Image.asset('assets/images/iconmonstr-github-1 1.png'),
-                          Text("GitHub", style: TextStyle(fontSize: 18)),
-                        ],
-                      ),
+
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                      children: [
+                         Image.asset('assets/images/iconmonstr-github-1 1.png'),
+                        Text("GitHub", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600)),
+                      ],
                     ),
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
@@ -169,18 +183,22 @@ class _signupageState extends State<signupage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Image.asset('assets/images/iconmonstr-github-1 1.png'),
-          
-                        Text("GitLab", style: TextStyle(fontSize: 18)),
+
+                        Text("GitLab", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600)),
                       ],
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 60,),
+              SizedBox(height: 60),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Already have an account ? ",style: TextStyle(fontSize: 16),),
-                  Text("login", style: TextStyle(color: Colors.purple)),
+                  Text(
+                    "Already have an account ? ",
+                    style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),
+                  ),
+                  Text("login", style: TextStyle(color: Colors.purple,fontWeight: FontWeight.w600)),
                 ],
               ),
             ],

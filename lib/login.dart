@@ -9,7 +9,8 @@ class loginpage extends StatefulWidget {
 }
 
 class _loginpageState extends State<loginpage> {
-  TextStyle globalStyle = TextStyle(color: Color.fromRGBO(78, 1, 137, 1));
+  bool isChecked=false;
+  Color globalStyle = Color.fromRGBO(78, 1, 137, 1);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,22 +21,22 @@ class _loginpageState extends State<loginpage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 100),
-              Text("Hi, Wecome Back! 👋 ", style: TextStyle(fontSize: 25)),
-              Text("Hello again, you’ve been missed!"),
+              Text("Hi, Wecome Back! 👋 ", style: TextStyle(fontSize: 25,fontWeight: FontWeight.w600)),
+              Text("Hello again, you’ve been missed!",style: TextStyle(fontWeight: FontWeight.w600),),
               SizedBox(height: 50),
 
-              Text("Email", style: globalStyle),
+              Text("Email", style: TextStyle(fontWeight: FontWeight.w600,color: globalStyle),),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
                   labelText: 'sophat.leat@nintrea.live',
-                  labelStyle: TextStyle(fontFamily: 'Manrope'),
+                  labelStyle: TextStyle(fontFamily: 'Manrope',fontWeight: FontWeight.w600),
                 ),
               ),
               SizedBox(height: 25),
-              Text("Password", style: globalStyle),
+              Text("Password", style: TextStyle(fontWeight: FontWeight.w600,color: globalStyle),),
 
               TextField(
                 decoration: InputDecoration(
@@ -43,23 +44,28 @@ class _loginpageState extends State<loginpage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  labelText: 'Please fasdf Your Password',
+                  labelText: 'Please fasdf Your Password',labelStyle: TextStyle(fontWeight: FontWeight.w600)
                 ),
               ),
               SizedBox(height: 30),
               Row(
                 children: [
-                  Icon(Icons.check_box_outlined),
-
-                  Text("Remember Me"),
+                  Checkbox(value: isChecked, onChanged: (value){
+                    setState(() {
+                      isChecked=value??false;
+                    });
+                  }),
+                  Text("Remember Me",style: TextStyle(fontWeight: FontWeight.w600),),
                   Spacer(),
-                  Text("Forgot Password", style: TextStyle(color: Colors.red)),
+                  Text("Forgot Password", style: TextStyle(fontWeight: FontWeight.w600,color: Colors.red)),
                   SizedBox(height: 30),
                 ],
-              ),
 
+              ),
+SizedBox(height: 30,),
               SizedBox(height: 50,
                 width: MediaQuery.of(context).size.width * 0.99,
+
                 child: ElevatedButton(
                   child: Text('Login', style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(
@@ -80,7 +86,7 @@ class _loginpageState extends State<loginpage> {
                       endIndent: 10,
                     ),
                   ),
-                  Text("or with"),
+                  Text("or with",style: TextStyle(fontWeight: FontWeight.w600),),
                   Expanded(
                     child: Divider(
                       height: 10,
@@ -108,7 +114,7 @@ class _loginpageState extends State<loginpage> {
 
                       children: [
                         Image.asset('assets/images/iconmonstr-github-1 1.png'),
-                        Text("GitHub", style: TextStyle(fontSize: 18)),
+                        Text("GitHub", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600)),
                       ],
                     ),
                   ),
@@ -125,7 +131,7 @@ class _loginpageState extends State<loginpage> {
                       children: [
                         Image.asset('assets/images/iconmonstr-github-1 1.png'),
 
-                        Text("GitLab", style: TextStyle(fontSize: 18)),
+                        Text("GitLab", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600)),
                       ],
                     ),
                   ),
@@ -133,9 +139,10 @@ class _loginpageState extends State<loginpage> {
               ),
               SizedBox(height: 100),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don’t have an account ? "),
-                  Text("Sign up", style: TextStyle(color: Colors.purple)),
+                  Text("Don’t have an account ? ",style: TextStyle(fontWeight: FontWeight.w600),),
+                  Text("Sign up", style: TextStyle(fontWeight: FontWeight.w600,color: Colors.purple)),
                 ],
               ),
             ],
